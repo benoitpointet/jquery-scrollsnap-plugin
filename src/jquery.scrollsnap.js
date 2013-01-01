@@ -1,30 +1,65 @@
+// TODO allow for x scrollsnapping
 (function( $ ) {
 
     $.fn.scrollsnap = function( options ) {
 
         var settings = $.extend( {
-            'offset' : -0,
-            'proximity' : 50,
+            'offset' : 0,
+            'proximity' : 12,
+            'snaps' : '*',
         }, options);
-
-        var snapTo = function (el) {
-            window.scrollTo(window.scrollX, el.offsetTop + settings.offset);
-        };
 
         return this.each(function() {
 
-            var $this = this;
+            var scrollingEl = this;
 
-            $(window).bind('scrollstop', function(e) {
-                var y2 = $this.offsetTop - window.scrollY,
-                distance = Math.abs(y2);
+            if  (scrollingEl.scrollTop !== undefined) {
+                // scrollingEl is DOM element
+                $(scrollingEl).css('position', 'relative');
 
-                if (settings.type == 'proximity' && distance <= settings.proximity) {
-                    snapTo($this);
-                }
+                $(scrollingEl).bind('scrollstop', function(e) {
 
-                //console.log(y2, $this, $this.offsetTop);
-            });
+                    var matchingEl = null, matchingDy = settings.proximity + 1;
+
+                    $(scrollingEl).find(settings.snaps).each(function() {
+                        var snappingEl = this,
+                            dy = Math.abs(snappingEl.offsetTop - scrollingEl.scrollTop);
+
+                        if (dy <= settings.proximity && dy < matchingDy) {
+                            matchingEl = snappingEl;
+                            matchingDy = dy;
+                        }
+                    });
+
+                    if (matchingEl) {
+                        $(scrollingEl).animate({scrollTop: matchingEl.offsetTop}, 200);
+                    }
+
+                });
+
+            } else if (scrollingEl.defaultView) {
+                // scrollingEl is DOM document
+                $(scrollingEl).bind('scrollstop', function(e) {
+
+                    var matchingEl = null, matchingDy = settings.proximity + 1;
+
+                    $(scrollingEl).find(settings.snaps).each(function() {
+                        var snappingEl = this;
+
+                        var dy = Math.abs(snappingEl.offsetTop - scrollingEl.defaultView.scrollY);
+
+                        if (dy <= settings.proximity && dy < matchingDy) {
+                            matchingEl = snappingEl;
+                            matchingDy = dy;
+                        }
+                    });
+
+                    if (matchingEl) {
+                        scrollingEl.defaultView.scrollTo(scrollingEl.scrollX, matchingEl.offsetTop);
+                    }
+
+                });
+            }
 
         });
 
