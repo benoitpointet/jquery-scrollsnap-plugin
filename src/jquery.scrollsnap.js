@@ -1,44 +1,33 @@
 (function( $ ) {
+
     $.fn.scrollsnap = function( options ) {
 
+        var settings = $.extend( {
+            'offset' : -0,
+            'proximity' : 50,
+        }, options);
+
+        var snapTo = function (el) {
+            window.scrollTo(window.scrollX, el.offsetTop + settings.offset);
+        };
+
         return this.each(function() {
-            var settings = $.extend( {
-                'offset' : 0,
-                'proximity' : 24,
-                'type': 'proximity'
-            }, options),
-                y = 0,
-                snap = false,
-                $this = this;
 
-            var snapTo = function (el, duration) {
-                if (duration) {
-                    snap = true;
-                    window.setTimeout(function(){snap = false}, duration);
-                }
-                window.scrollTo(window.scrollX, el.offsetTop + settings.offset);
-            };
+            var $this = this;
 
-            $(document).scroll(function (e) {
-                var y2 = $this.offsetTop + settings.offset - window.scrollY,
-                    distance = Math.abs(y2),
-                    crossed = y * y2 < 0;
+            $(window).bind('scrollstop', function(e) {
+                var y2 = $this.offsetTop - window.scrollY,
+                distance = Math.abs(y2);
 
-                if (snap && settings.type == 'mandatory') {
+                if (settings.type == 'proximity' && distance <= settings.proximity) {
                     snapTo($this);
-                } else {
-                    if (settings.type == 'proximity' && distance <= settings.proximity) {
-                        snapTo($this, 800);
-                    }
-
-                    if (settings.type == 'mandatory' && crossed) {
-                        snapTo($this, 800);
-                    }
                 }
 
-
-                y = y2;
+                //console.log(y2, $this, $this.offsetTop);
             });
+
         });
+
     };
+
 })( jQuery );
