@@ -1,0 +1,23 @@
+.snap {
+    padding-top: 30px;
+    background-image: url('../images/snapline.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+code ul li {
+    font-size: 85%;
+}
+
+dt {
+    float: left;
+    display: block;
+    font-weight: bold;
+    margin-right: .5em;
+}
+
+@media only screen and (max-device-width: 1481px) {
+    h1 {
+        font-size: 55px;
+    }
+}
