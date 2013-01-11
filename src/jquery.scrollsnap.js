@@ -32,7 +32,7 @@
                     });
 
                     if (matchingEl) {
-                        $(scrollingEl).animate({scrollTop: matchingEl.offsetTop}, 200);
+                        $(scrollingEl).animate({scrollTop: (matchingEl.offsetTop + settings.offset)}, 200);
                     }
 
                 });
@@ -46,7 +46,7 @@
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this;
 
-                        var dy = Math.abs(snappingEl.offsetTop - scrollingEl.defaultView.scrollY);
+                        var dy = Math.abs($(snappingEl).offset().top - scrollingEl.defaultView.scrollY);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -55,7 +55,7 @@
                     });
 
                     if (matchingEl) {
-                        scrollingEl.defaultView.scrollTo(scrollingEl.scrollX, matchingEl.offsetTop);
+                        scrollingEl.defaultView.scrollTo(scrollingEl.scrollX, $(matchingEl).offset().top + settings.offset);
                     }
 
                 });
