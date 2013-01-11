@@ -18,6 +18,7 @@ dt {
 
 @media only screen and (max-device-width: 1481px) {
     h1 {
-        font-size: 55px;
+        margin-top: 60px;
+        font-size: 45px;
     }
 }
