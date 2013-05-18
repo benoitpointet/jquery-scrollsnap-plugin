@@ -54,7 +54,7 @@
 
                         timer = null;
                         evt.type = 'scrollstop';
-                        $.event.handle.apply(_self, _args);
+                        $.event.dispatch.call(_self, evt);
 
                     }, special.scrollstop.latency);
 
