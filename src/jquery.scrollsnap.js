@@ -4,9 +4,11 @@
     $.fn.scrollsnap = function( options ) {
 
         var settings = $.extend( {
-            'offset' : 0,
-            'proximity' : 12,
             'snaps' : '*',
+            'proximity' : 12,
+            'offset' : 0,
+            'duration' : 200,
+            'easing' : 'swing',
         }, options);
 
         return this.each(function() {
@@ -14,7 +16,7 @@
             var scrollingEl = this;
 
             if  (scrollingEl.scrollTop !== undefined) {
-                // scrollingEl is DOM element
+                // scrollingEl is DOM element (not document)
                 $(scrollingEl).css('position', 'relative');
 
                 $(scrollingEl).bind('scrollstop', function(e) {
@@ -32,7 +34,7 @@
                     });
 
                     if (matchingEl) {
-                        $(scrollingEl).animate({scrollTop: (matchingEl.offsetTop + settings.offset)}, 200);
+                        $(scrollingEl).animate({scrollTop: (matchingEl.offsetTop + settings.offset)}, settings.duration, settings.easing);
                     }
 
                 });
@@ -55,7 +57,7 @@
                     });
 
                     if (matchingEl) {
-                        scrollingEl.defaultView.scrollTo(scrollingEl.scrollX, $(matchingEl).offset().top + settings.offset);
+                        $('html, body').animate({scrollTop: ($(matchingEl).offset().top + settings.offset)}, settings.duration, settings.easing);
                     }
 
                 });

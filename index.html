@@ -28,12 +28,14 @@
   <script src="demo/foundation/javascripts/jquery.js"></script>
   <script src="demo/snippet/jquery.snippet.min.js"></script>
   <script src="src/jquery.event.special.js"></script>
+  <script src="src/jquery.easing.min.js"></script>
   <script src="src/jquery.scrollsnap.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $(document).scrollsnap({
         snaps: '.snap',
-        proximity: 50
+        proximity: 50,
+        easing: 'easeOutBack'
         });
       $("code pre").snippet("javascript",{style:"vim",showNum:false});
     });
@@ -70,12 +72,13 @@
     <div class="twelve columns">
       <h3 class="snap">Use it</h3>
       <h5>Installation</h5>
-      <p>It of course requires <a href="">jQuery</a>, but also <a href="http://james.padolsey.com/javascript/special-scroll-events-for-jquery/">another jQuery plugin by James Padolsey</a> implementing special scroll events. This <strong>jquery.event.special.js</strong> plugin is here provided along the <strong>jquery.scrollsnap.js</strong> source file, for ease of use.</p>
-      <p>Note that this plugin just implements the vertical snapping logic and provides no styling.</p>
+      <p>It of course requires <a href="">jQuery</a>, but also two jquery plugins: <a href="http://james.padolsey.com/javascript/special-scroll-events-for-jquery/">jquery.event.special.js</a> that implements special scroll events, and <a href="http://gsgd.co.uk/sandbox/jquery/easing/">jquery.easing.js</a>, that provides extra <a href="http://easings.net/">easing functions</a>. These plugins are here provided along the <strong>jquery.scrollsnap.js</strong> source file, for ease of use.</p>
+      <p>Note that the Scrollsnap plugin only implements the vertical snapping logic and provides no styling.</p>
       <h5 class="snap">Usage</h5>
       <code><pre>
 &lt;script src=&quot;demo/foundation/javascripts/jquery.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;src/jquery.event.special.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;src/jquery.easing.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;src/jquery.scrollsnap.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
 $(document).ready(function() {
@@ -89,9 +92,11 @@ $(document).ready(function() {
       <p>
         The following parameters can be passed to the <strong>scrollsnap()</strong> method to influence its behaviour:
         <dl>
-            <dt>snaps:</dt><dd>the CSS selector of snapping elements.</dd>
-            <dt>proximity:</dt><dd>the maximal distance from the viewport top from which the snapping occurs.</dd>
-            <dt>offset:</dt><dd>the vertical offset the snapping move must take.</dd>
+            <dt>snaps:</dt><dd>the CSS selector of snapping elements; default: '*'.</dd>
+            <dt>proximity:</dt><dd>the maximal distance from the viewport top from which the snapping occurs; default: 12.</dd>
+            <dt>offset:</dt><dd>the vertical offset the snapping move must take; default: 0.</dd>
+            <dt>duration:</dt><dd>the number of milliseconds during which the snapping animation takes place; default: 200.</dd>
+            <dt>easing:</dt><dd><a href="http://easings.net/">easing function</a>; default: 'swing' (the default jquery easing).</dd>
         </dl>
       </p>
     </div>
