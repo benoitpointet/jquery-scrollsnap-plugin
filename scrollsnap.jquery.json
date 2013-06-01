@@ -3,7 +3,9 @@
     "title": "jQuery Scrollsnap Plugin",
     "description": "A jQuery plugin that enhances the scrolling experience, by providing a snapping behaviour.",
     "keywords": [
+        "animation",
         "snap",
+        "scrolling",
         "scroll"
     ],
     "version": "1.0.1",
