@@ -1,4 +1,4 @@
-jquery-snapscroll-plugin
+jquery-scrollsnap-plugin
 ========================
 
 Javascript implementation of vertical scroll snapping.

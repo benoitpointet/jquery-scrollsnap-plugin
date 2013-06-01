@@ -1,0 +1,27 @@
+{
+    "name": "scrollsnap",
+    "title": "jQuery Scrollsnap Plugin",
+    "description": "A jQuery plugin that enhances the scrolling experience, by providing a snapping behaviour.",
+    "keywords": [
+        "snap",
+        "scroll"
+    ],
+    "version": "1.0.1",
+    "author": {
+        "name": "Benoit Pointet"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/benoitpointet/jquery-scrollsnap-plugin/master/MIT-LICENSE.txt"
+        }
+    ],
+    "bugs": "https://github.com/benoitpointet/jquery-scrollsnap-plugin/issues",
+    "homepage": "http://benoit.pointet.info/stuff/jquery-scrollsnap-plugin/",
+    "demo": "http://benoit.pointet.info/stuff/jquery-scrollsnap-plugin/",
+    "docs": "http://benoit.pointet.info/stuff/jquery-scrollsnap-plugin/",
+    "dependencies": {
+        "jquery": ">=1.9",
+        "jquery.easing": ">=1.3"
+    }
+}
