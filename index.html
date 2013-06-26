@@ -37,6 +37,11 @@
         proximity: 50,
         easing: 'easeOutBack'
         });
+      $('#scrolling300').scrollsnap({
+        snaps: 'img',
+        proximity: 160,
+        easing: 'easeOutBounce'
+        });
       $("code pre").snippet("javascript",{style:"vim",showNum:false});
     });
   </script>
@@ -55,6 +60,12 @@
       <h3 class="snap">Scroll snapping</h3>
       <p>Scrollsnap allows to define 'anchor points' onto which the window snaps when you scroll through a web page or parts of it.</p>
       <p>Scroll this page and notice how the window will snap to each snapping element (visible thru their snap line decoration).</p>
+      <p>Scroll on the colored rectangle, and notice how it snaps perfectly to each of the colored rectangles.</p>
+      <div id="scrolling300">
+        <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me down' />
+        <img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' />
+        <img src='http://placehold.it/300x160/ff0000/000000&text=scroll me up' />
+      </div>
     </div>
     <div class="six columns">
       <h3 class="snap">Compatibility</h3>
