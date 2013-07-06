@@ -34,7 +34,10 @@
                     });
 
                     if (matchingEl) {
-                        $(scrollingEl).animate({scrollTop: (matchingEl.offsetTop + settings.offset)}, settings.duration, settings.easing);
+                        var endScrollTop = matchingEl.offsetTop + settings.offset;
+                        if($(scrollingEl).scrollTop() != endScrollTop) {
+                            $(scrollingEl).animate({scrollTop: endScrollTop}, settings.duration, settings.easing);
+                        }
                     }
 
                 });
@@ -57,7 +60,10 @@
                     });
 
                     if (matchingEl) {
-                        $('html, body').animate({scrollTop: ($(matchingEl).offset().top + settings.offset)}, settings.duration, settings.easing);
+                        var endScrollTop = $(matchingEl).offset().top + settings.offset;
+                        if($(scrollingEl).scrollTop() != endScrollTop) {
+                            $('html, body').animate({scrollTop: endScrollTop}, settings.duration, settings.easing);
+                        }
                     }
 
                 });
