@@ -15,7 +15,7 @@
 
             var scrollingEl = this;
 
-            if  (scrollingEl.scrollTop !== undefined) {
+            if (scrollingEl.scrollTop !== undefined) {
                 // scrollingEl is DOM element (not document)
                 $(scrollingEl).css('position', 'relative');
 
@@ -25,7 +25,7 @@
 
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this,
-                            dy = Math.abs(snappingEl.offsetTop - scrollingEl.scrollTop);
+                            dy = Math.abs(snappingEl.offsetTop + settings.offset - scrollingEl.scrollTop);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -51,7 +51,7 @@
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this;
 
-                        var dy = Math.abs($(snappingEl).offset().top - scrollingEl.defaultView.scrollY);
+                        var dy = Math.abs(($(snappingEl).offset().top + settings.offset) - scrollingEl.defaultView.scrollY);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
