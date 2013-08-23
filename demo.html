@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>jQuery Scrollsnap plugin</title>
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="demo/foundation/stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="demo/snippet/jquery.snippet.min.css">
+  <link rel="stylesheet" href="demo/css/presentation.css">
+
+  <script src="demo/foundation/javascripts/modernizr.foundation.js"></script>
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script src="demo/foundation/javascripts/jquery.js"></script>
+  <script src="demo/snippet/jquery.snippet.min.js"></script>
+  <script src="src/jquery.event.special.js"></script>
+  <script src="src/jquery.easing.min.js"></script>
+  <script src="src/jquery.scrollsnap.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.horizontal').scrollsnap({
+        direction: 'x',
+        snaps: 'img',
+        proximity: 300
+        });
+      $("code pre").snippet("javascript",{style:"vim",showNum:false});
+    });
+  </script>
+
+  <style>
+    .horizontal {
+      height: 160px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="horizontal">
+    <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me left' /><img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff0000/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ffff00/000000&text=scroll me right' />
+  </div>
+</body>
+</html>
+
