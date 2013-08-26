@@ -11,27 +11,13 @@
             'easing' : 'swing',
         }, options);
 
+        var leftOrTop = settings.direction === 'x' ? 'Left' : 'Top';
+
         return this.each(function() {
 
             var scrollingEl = this;
 
-            if (settings.direction === 'x') {
-                var offsetDirection = 'offsetLeft';
-                var scrollDirection = 'scrollLeft';
-            } else {
-                var offsetDirection = 'offsetTop';
-                var scrollDirection = 'scrollTop';
-            }
-
-            $.fn.scrollSomewhere = function() {
-                if (settings.direction === 'x') {
-                    $(this).scrollLeft();
-                } else {
-                    $(this).scrollTop();
-                }
-            }
-
-            if (scrollingEl[scrollDirection] !== undefined) {
+            if (scrollingEl['scroll'+leftOrTop] !== undefined) {
                 // scrollingEl is DOM element (not document)
                 $(scrollingEl).css('position', 'relative');
 
@@ -41,7 +27,7 @@
 
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this,
-                            dy = Math.abs(snappingEl[offsetDirection] + settings.offset - scrollingEl[scrollDirection]);
+                            dy = Math.abs(snappingEl['offset'+leftOrTop] + settings.offset - scrollingEl['scroll'+leftOrTop]);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -50,14 +36,11 @@
                     });
 
                     if (matchingEl) {
-                        var endScroll = matchingEl[offsetDirection] + settings.offset;
-                        if (settings.direction === 'x') {
-                            var animateObj = {scrollLeft: endScroll};
-                        } else {
-                            var animateObj = {scrollTop: endScroll};
-                        }
-                        if($(scrollingEl).scrollSomewhere() != endScroll) {
-                            $(scrollingEl).animate(animateObj, settings.duration, settings.easing);
+                        var endScroll = matchingEl['offset'+leftOrTop] + settings.offset,
+                            animateProp = {};
+                        animateProp['scroll'+leftOrTop] = endScroll;
+                        if ($(scrollingEl)['scroll'+leftOrTop]() != endScroll) {
+                            $(scrollingEl).animate(animateProp, settings.duration, settings.easing);
                         }
                     }
 
@@ -70,9 +53,8 @@
                     var matchingEl = null, matchingDy = settings.proximity + 1;
 
                     $(scrollingEl).find(settings.snaps).each(function() {
-                        var snappingEl = this;
-
-                        var dy = Math.abs(($(snappingEl).offset().top + settings.offset) - scrollingEl.defaultView.scrollY);
+                        var snappingEl = this,
+                            dy = Math.abs(($(snappingEl).offset()[leftOrTop.toLowerCase()] + settings.offset) - scrollingEl.defaultView['scroll'+settings.direction.toUpperCase()]);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -81,14 +63,11 @@
                     });
 
                     if (matchingEl) {
-                        var endScroll = $(matchingEl).offset().top + settings.offset;
-                        if (settings.direction === 'x') {
-                            var animateObj = {scrollLeft: endScroll};
-                        } else {
-                            var animateObj = {scrollTop: endScroll};
-                        }
-                        if($(scrollingEl).scrollSomewhere() != endScroll) {
-                            $('html, body').animate(animateObj, settings.duration, settings.easing);
+                        var endScroll = $(matchingEl).offset()[leftOrTop.toLowerCase()] + settings.offset,
+                            animateProp = {};
+                        animateProp['scroll'+leftOrTop] = endScroll;
+                        if ($(scrollingEl)['scroll'+leftOrTop]() != endScroll) {
+                            $('html, body').animate(animateProp, settings.duration, settings.easing);
                         }
                     }
 

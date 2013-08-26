@@ -19,12 +19,14 @@ dt {
 #scrolling300 {
 	height: 160px;
 	width: 300px;
-	overflow: scroll;
+	overflow-x: scroll;
+	overflow-y: hidden;
+  white-space: nowrap;
 }
 
 
 #scrolling300 img {
-	display: block;
+	/*display: block;*/
 }
 @media only screen and (max-device-width: 1481px) {
     h1 {
