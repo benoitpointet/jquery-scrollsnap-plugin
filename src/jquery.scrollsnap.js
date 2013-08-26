@@ -41,7 +41,7 @@
 
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this,
-                            dy = Math.abs(snappingEl[offsetDirection] + settings.offset - scrollingEl[scrollDirection]);
+                            dy = Math.abs(snappingEl[offsetDirection] - ($(scrollingEl).width()/2) + ($(snappingEl).width()/2) + settings.offset - scrollingEl[scrollDirection]);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -50,7 +50,7 @@
                     });
 
                     if (matchingEl) {
-                        var endScroll = matchingEl[offsetDirection] + settings.offset;
+                        var endScroll = matchingEl[offsetDirection] - ($(scrollingEl).width()/2) + ($(matchingEl).width()/2) + settings.offset;
                         if (settings.direction === 'x') {
                             var animateObj = {scrollLeft: endScroll};
                         } else {
