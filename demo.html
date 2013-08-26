@@ -34,9 +34,10 @@
     $(document).ready(function() {
       $('.horizontal').scrollsnap({
         direction: 'x',
-        snaps: 'img',
-        proximity: 300
-        });
+        duration: 100,
+        proximity: 160,
+        snaps: 'img'
+      });
       $("code pre").snippet("javascript",{style:"vim",showNum:false});
     });
   </script>
@@ -48,12 +49,24 @@
       overflow-y: hidden;
       white-space: nowrap;
       width: 100%;
+      -webkit-overflow-scrolling: touch;
+    }
+    .horizontal img {
+      height: 160px;
+      margin: 0 5px;
+      width: 160px;
+    }
+    .horizontal img:first-child {
+      margin-left: 120px;
+    }
+    .horizontal img:last-child {
+      margin-right: 120px;
     }
   </style>
 </head>
 <body>
   <div class="horizontal">
-    <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me left' /><img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff0000/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ffff00/000000&text=scroll me right' />
+    <img src='http://placehold.it/160x160/00ff00/000000&text=scroll me left' /><img src='http://placehold.it/160x160/0000ff/000000&text=keep scrolling' /><img src='http://placehold.it/160x160/ff0000/000000&text=keep scrolling' /><img src='http://placehold.it/160x160/ff00ff/000000&text=keep scrolling' /><img src='http://placehold.it/160x160/00ffff/000000&text=keep scrolling' /><img src='http://placehold.it/160x160/999999/000000&text=keep scrolling' /><img src='http://placehold.it/160x160/ffff00/000000&text=scroll me right' />
   </div>
 </body>
 </html>

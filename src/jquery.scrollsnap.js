@@ -1,4 +1,3 @@
-// TODO allow for x scrollsnapping
 (function( $ ) {
 
     $.fn.scrollsnap = function( options ) {
@@ -16,20 +15,20 @@
 
             var scrollingEl = this;
 
-            if (settings.direction === "x") {
-              var offsetDirection = 'offsetLeft';
-              var scrollDirection = 'scrollLeft';
+            if (settings.direction === 'x') {
+                var offsetDirection = 'offsetLeft';
+                var scrollDirection = 'scrollLeft';
             } else {
-              var offsetDirection = 'offsetTop';
-              var scrollDirection = 'scrollTop';
+                var offsetDirection = 'offsetTop';
+                var scrollDirection = 'scrollTop';
             }
 
             $.fn.scrollSomewhere = function() {
-              if (settings.direction === "x") {
-                $(this).scrollLeft();
-              } else {
-                $(this).scrollTop();
-              }
+                if (settings.direction === 'x') {
+                    $(this).scrollLeft();
+                } else {
+                    $(this).scrollTop();
+                }
             }
 
             if (scrollingEl[scrollDirection] !== undefined) {
@@ -52,10 +51,10 @@
 
                     if (matchingEl) {
                         var endScroll = matchingEl[offsetDirection] + settings.offset;
-                        if (settings.direction === "x") {
-                          var animateObj = {scrollLeft: endScroll};
+                        if (settings.direction === 'x') {
+                            var animateObj = {scrollLeft: endScroll};
                         } else {
-                          var animateObj = {scrollTop: endScroll};
+                            var animateObj = {scrollTop: endScroll};
                         }
                         if($(scrollingEl).scrollSomewhere() != endScroll) {
                             $(scrollingEl).animate(animateObj, settings.duration, settings.easing);
@@ -83,10 +82,10 @@
 
                     if (matchingEl) {
                         var endScroll = $(matchingEl).offset().top + settings.offset;
-                        if (settings.direction === "x") {
-                          var animateObj = {scrollLeft: endScroll};
+                        if (settings.direction === 'x') {
+                            var animateObj = {scrollLeft: endScroll};
                         } else {
-                          var animateObj = {scrollTop: endScroll};
+                            var animateObj = {scrollTop: endScroll};
                         }
                         if($(scrollingEl).scrollSomewhere() != endScroll) {
                             $('html, body').animate(animateObj, settings.duration, settings.easing);
