@@ -24,10 +24,6 @@ dt {
   white-space: nowrap;
 }
 
-
-#scrolling300 img {
-	/*display: block;*/
-}
 @media only screen and (max-device-width: 1481px) {
     h1 {
         margin-top: 60px;
