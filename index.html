@@ -37,12 +37,15 @@
         proximity: 100,
         easing: 'easeOutBack'
         });
-      $('#scrolling300').scrollsnap({
+      $('#scrollingy300').scrollsnap({
+        snaps: 'img',
+        proximity: 160
+      });
+      $('#scrollingx300').scrollsnap({
         direction: 'x',
         snaps: 'img',
-        proximity: 160,
-        easing: 'easeOutBounce'
-        });
+        proximity: 160
+      });
       $("code pre").snippet("javascript",{style:"vim",showNum:false});
     });
   </script>
@@ -61,9 +64,19 @@
       <h3 class="snap">Scroll snapping</h3>
       <p>Scrollsnap allows to define 'anchor points' onto which the window snaps when you scroll through a web page or parts of it.</p>
       <p>Scroll this page and notice how the window will snap to each snapping element (visible thru their snap line decoration).</p>
-      <p>Scroll on the colored rectangle, and notice how it snaps perfectly to each of the colored rectangles.</p>
-      <div id="scrolling300">
-        <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me right' /><img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' /><img src='http://placehold.it/300x160/ff0000/000000&text=scroll me left' />
+      <p>Scroll on the colored rectangles (horizontally and vertically), and notice how it snaps perfectly to each of the colored rectangles.</p>
+      <div id="scrollingy300">
+          <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me down'/>
+          <img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' />
+          <img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' />
+          <img src='http://placehold.it/300x160/ff0000/000000&text=scroll me up' />
+      </div>
+      <div id="scrollingx300">
+          <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me right'/>
+          <img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' />
+          <img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' />
+          <img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' />
+          <img src='http://placehold.it/300x160/ff0000/000000&text=scroll me left' />
       </div>
     </div>
     <div class="six columns">

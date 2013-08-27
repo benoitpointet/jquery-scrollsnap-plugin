@@ -16,12 +16,18 @@ dt {
     margin-right: .5em;
 }
 
-#scrolling300 {
+#scrollingy300 {
 	height: 160px;
 	width: 300px;
-	overflow-x: scroll;
+	overflow: scroll;
+}
+
+#scrollingx300 {
+	height: 160px;
+	width: 300px;
 	overflow-y: hidden;
-  white-space: nowrap;
+	overflow-x: scroll;
+    white-space: nowrap;
 }
 
 @media only screen and (max-device-width: 1481px) {
