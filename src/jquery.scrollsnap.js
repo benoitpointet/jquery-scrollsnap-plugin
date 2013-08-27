@@ -1,9 +1,9 @@
-// TODO allow for x scrollsnapping
 (function( $ ) {
 
     $.fn.scrollsnap = function( options ) {
 
         var settings = $.extend( {
+            'direction': 'y',
             'snaps' : '*',
             'proximity' : 12,
             'offset' : 0,
@@ -11,11 +11,13 @@
             'easing' : 'swing',
         }, options);
 
+        var leftOrTop = settings.direction === 'x' ? 'Left' : 'Top';
+
         return this.each(function() {
 
             var scrollingEl = this;
 
-            if (scrollingEl.scrollTop !== undefined) {
+            if (scrollingEl['scroll'+leftOrTop] !== undefined) {
                 // scrollingEl is DOM element (not document)
                 $(scrollingEl).css('position', 'relative');
 
@@ -25,7 +27,7 @@
 
                     $(scrollingEl).find(settings.snaps).each(function() {
                         var snappingEl = this,
-                            dy = Math.abs(snappingEl.offsetTop + settings.offset - scrollingEl.scrollTop);
+                            dy = Math.abs(snappingEl['offset'+leftOrTop] + settings.offset - scrollingEl['scroll'+leftOrTop]);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -34,9 +36,11 @@
                     });
 
                     if (matchingEl) {
-                        var endScrollTop = matchingEl.offsetTop + settings.offset;
-                        if($(scrollingEl).scrollTop() != endScrollTop) {
-                            $(scrollingEl).animate({scrollTop: endScrollTop}, settings.duration, settings.easing);
+                        var endScroll = matchingEl['offset'+leftOrTop] + settings.offset,
+                            animateProp = {};
+                        animateProp['scroll'+leftOrTop] = endScroll;
+                        if ($(scrollingEl)['scroll'+leftOrTop]() != endScroll) {
+                            $(scrollingEl).animate(animateProp, settings.duration, settings.easing);
                         }
                     }
 
@@ -49,9 +53,8 @@
                     var matchingEl = null, matchingDy = settings.proximity + 1;
 
                     $(scrollingEl).find(settings.snaps).each(function() {
-                        var snappingEl = this;
-
-                        var dy = Math.abs(($(snappingEl).offset().top + settings.offset) - scrollingEl.defaultView.scrollY);
+                        var snappingEl = this,
+                            dy = Math.abs(($(snappingEl).offset()[leftOrTop.toLowerCase()] + settings.offset) - scrollingEl.defaultView['scroll'+settings.direction.toUpperCase()]);
 
                         if (dy <= settings.proximity && dy < matchingDy) {
                             matchingEl = snappingEl;
@@ -60,9 +63,11 @@
                     });
 
                     if (matchingEl) {
-                        var endScrollTop = $(matchingEl).offset().top + settings.offset;
-                        if($(scrollingEl).scrollTop() != endScrollTop) {
-                            $('html, body').animate({scrollTop: endScrollTop}, settings.duration, settings.easing);
+                        var endScroll = $(matchingEl).offset()[leftOrTop.toLowerCase()] + settings.offset,
+                            animateProp = {};
+                        animateProp['scroll'+leftOrTop] = endScroll;
+                        if ($(scrollingEl)['scroll'+leftOrTop]() != endScroll) {
+                            $('html, body').animate(animateProp, settings.duration, settings.easing);
                         }
                     }
 
