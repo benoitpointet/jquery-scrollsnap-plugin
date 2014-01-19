@@ -135,6 +135,9 @@ $(document).ready(function() {
             <dt>offset:</dt><dd>the offset the snapping move must take; default: 0.</dd>
             <dt>duration:</dt><dd>the number of milliseconds during which the snapping animation takes place; default: 200.</dd>
             <dt>easing:</dt><dd><a href="http://easings.net/">easing function</a>; default: 'swing' (the default jquery easing).</dd>
+            <dt>onSnapEvent:</dt><dd>the name of the event to trigger on the snapped DOM element when the snapping occurs; default: scrollsnap.</dd>
+            <dt>onSnap:</dt><dd>the callback function to call when a DOM element is snapped; the element is passed as argument.</dd>
+            <dt>onSnapWait:</dt><dd>the number of millinseconds to wait before the onSnapEvent is fired (to avoid redundant snaps); defaullt: 50.</dd>
         </dl>
       </p>
     </div>
