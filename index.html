@@ -27,7 +27,7 @@
 
   <script src="demo/foundation/javascripts/jquery.js"></script>
   <script src="demo/snippet/jquery.snippet.min.js"></script>
-  <script src="src/jquery.event.special.js"></script>
+  <script src="src/jquery.scrollstop.js"></script>
   <script src="src/jquery.easing.min.js"></script>
   <script src="src/jquery.scrollsnap.js"></script>
   <script type="text/javascript">
@@ -129,10 +129,11 @@ $(document).ready(function() {
       <p>
         The following parameters can be passed to the <strong>scrollsnap()</strong> method to influence its behaviour:
         <dl>
-            <dt>direction:</dt><dd>the direction of scrolling; default: 'y'.</dd>
             <dt>snaps:</dt><dd>the CSS selector of snapping elements; default: '*'.</dd>
+            <dt>direction:</dt><dd>the direction ('x', 'y') of scrolling; default: 'y'.</dd>
             <dt>proximity:</dt><dd>the maximal distance from the viewport top from which the snapping occurs; default: 12.</dd>
             <dt>offset:</dt><dd>the offset the snapping move must take; default: 0.</dd>
+            <dt>latency:</dt><dd>the time interval in milliseconds to check wether the scroll has stopped; default: 250.</dd>
             <dt>duration:</dt><dd>the number of milliseconds during which the snapping animation takes place; default: 200.</dd>
             <dt>easing:</dt><dd><a href="http://easings.net/">easing function</a>; default: 'swing' (the default jquery easing).</dd>
             <dt>onSnapEvent:</dt><dd>the name of the event to trigger on the snapped DOM element when the snapping occurs; default: scrollsnap.</dd>

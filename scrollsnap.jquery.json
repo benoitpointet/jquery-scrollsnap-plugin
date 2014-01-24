@@ -25,6 +25,6 @@
     "dependencies": {
         "jquery": ">=1.9",
         "jquery.easing": ">=1.3"
-        "scrollstop": ">=1.0.1"
+        "scrollstop": ">=1.1.0"
     }
 }

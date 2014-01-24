@@ -38,6 +38,7 @@
             'proximity' : 12,
             'offset' : 0,
             'duration' : 200,
+            'latency' : 250,
             'easing' : 'swing',
             'onSnapEvent' : 'scrollsnap', // triggered on the snapped DOM element
             'onSnap' : function ($snappedElement) { }, // callback when an element was snapped
@@ -55,7 +56,7 @@
                 // scrollingEl is DOM element (not document)
                 $scrollingEl.css('position', 'relative');
 
-                $scrollingEl.bind('scrollstop', function(e) {
+                $scrollingEl.bind('scrollstop', {latency: settings.latency}, function(e) {
 
                     var matchingEl = null, matchingDy = settings.proximity + 1;
 
@@ -91,7 +92,7 @@
 
             } else if (scrollingEl.defaultView) {
                 // scrollingEl is DOM document
-                $scrollingEl.bind('scrollstop', function(e) {
+                $scrollingEl.bind('scrollstop', {latency: settings.latency}, function(e) {
 
                     var matchingEl = null, matchingDy = settings.proximity + 1;
 
