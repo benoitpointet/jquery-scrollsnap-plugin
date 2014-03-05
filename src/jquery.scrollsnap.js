@@ -92,7 +92,7 @@
 
             } else if (scrollingEl.defaultView) {
                 // scrollingEl is DOM document
-                $scrollingEl.bind('scrollstop', {latency: settings.latency}, function(e) {
+                var handler = function(e) {
 
                     var matchingEl = null, matchingDy = settings.proximity + 1;
 
@@ -122,7 +122,9 @@
                             }, settings.onSnapWait));
                         }
                     }
-                });
+                };
+                $scrollingEl.bind('scrollstop', {latency: settings.latency}, handler);
+                $(window).bind('resize', {latency: settings.latency}, handler);
             }
         });
     };
