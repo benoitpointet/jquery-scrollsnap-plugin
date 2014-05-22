@@ -16,17 +16,35 @@ dt {
     margin-right: .5em;
 }
 
-#scrollingy300 {
+.scrollingy300 {
 	height: 160px;
 	width: 300px;
 	overflow: scroll;
 }
 
-#scrollingx300 {
+.scrollingx300 {
 	height: 160px;
 	width: 300px;
 	overflow-y: hidden;
 	overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.scrollingx300 {
+	height: 160px;
+	width: 300px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.iframe300 {
+	height: 160px;
+	width: 300px;
+}
+
+.w1500 {
+    width: 1500px;
     white-space: nowrap;
 }
 

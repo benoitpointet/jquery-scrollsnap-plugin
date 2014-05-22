@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width" />
 
   <title>jQuery Scrollsnap plugin</title>
-  
+
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="demo/foundation/stylesheets/foundation.min.css">
   <link rel="stylesheet" href="demo/snippet/jquery.snippet.min.css">
@@ -37,11 +37,11 @@
         proximity: 100,
         easing: 'easeOutBack'
         });
-      $('#scrollingy300').scrollsnap({
+      $('.scrollingy300').scrollsnap({
         snaps: 'img',
         proximity: 160
       });
-      $('#scrollingx300').scrollsnap({
+      $('.scrollingx300').scrollsnap({
         direction: 'x',
         snaps: 'img',
         proximity: 160
@@ -63,21 +63,27 @@
     <div class="six columns">
       <h3 class="snap">Scroll snapping</h3>
       <p>Scrollsnap allows to define 'anchor points' onto which the window snaps when you scroll through a web page or parts of it.</p>
+      <h4>Scrollsnap document</h4>
       <p>Scroll this page and notice how the window will snap to each snapping element (visible thru their snap line decoration).</p>
+      <h4>Scrollsnap scrollable elements</h4>
       <p>Scroll on the colored rectangles (horizontally and vertically), and notice how it snaps perfectly to each of the colored rectangles.</p>
-      <div id="scrollingy300">
+      <div class="scrollingy300">
           <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me down'/>
           <img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' />
           <img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' />
           <img src='http://placehold.it/300x160/ff0000/000000&text=scroll me up' />
       </div>
-      <div id="scrollingx300">
+      <div class="scrollingx300">
           <img src='http://placehold.it/300x160/00ff00/000000&text=scroll me right'/>
           <img src='http://placehold.it/300x160/00ffff/000000&text=keep scrolling' />
           <img src='http://placehold.it/300x160/0000ff/000000&text=keep scrolling' />
           <img src='http://placehold.it/300x160/ff00ff/000000&text=keep scrolling' />
           <img src='http://placehold.it/300x160/ff0000/000000&text=scroll me left' />
       </div>
+      <h4>Scrollsnap scrollable frames</h4>
+      <p>Same here but with iframes. Scroll on the colored rectangles (horizontally and vertically), and notice how it snaps perfectly to each of the colored rectangles.</p>
+      <iframe class="iframe300" src='demo/iframe-x.html' frameborder='0'></iframe>
+      <iframe class="iframe300" src='demo/iframe-y.html' frameborder='0'></iframe>
     </div>
     <div class="six columns">
       <h3 class="snap">Compatibility</h3>
