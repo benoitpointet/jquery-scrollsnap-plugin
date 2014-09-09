@@ -20,27 +20,22 @@ dt {
 	height: 160px;
 	width: 300px;
 	overflow: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .scrollingx300 {
 	height: 160px;
 	width: 300px;
-	overflow-y: hidden;
 	overflow-x: scroll;
-    white-space: nowrap;
-}
-
-.scrollingx300 {
-	height: 160px;
-	width: 300px;
 	overflow-y: hidden;
-	overflow-x: scroll;
     white-space: nowrap;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .iframe300 {
 	height: 160px;
 	width: 300px;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .w1500 {
