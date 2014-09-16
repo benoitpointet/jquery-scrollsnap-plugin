@@ -17,25 +17,33 @@ dt {
 }
 
 .scrollingy300 {
-	height: 160px;
-	width: 300px;
-	overflow: scroll;
+    height: 160px;
+    width: 300px;
+    overflow: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .scrollingx300 {
-	height: 160px;
-	width: 300px;
-	overflow-x: scroll;
-	overflow-y: hidden;
+    height: 160px;
+    width: 300px;
+    overflow-x: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .iframe300 {
-	height: 160px;
-	width: 300px;
+    height: 160px;
+    width: 300px;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling:touch;
+    overflow: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.iframed {
+    width: 10px;
+    min-width: 100%;
 }
 
 .w1500 {
