@@ -77,7 +77,7 @@
                         var endScroll = matchingEl[offsetLT] + settings.offset,
                             animateProp = {};
                         animateProp[scrollLT] = endScroll;
-                        if ($scrollingEl[scrollLT]() != endScroll) {
+                        if (Math.abs($scrollingEl[scrollLT]() - endScroll)>2) {
                             $scrollingEl.animate(animateProp, settings.duration, settings.easing, debounce(function () {
                                 var $matchingEl = $(matchingEl);
 
@@ -120,7 +120,7 @@
                             endScroll = $matchingEl.offset()[leftOrTop.toLowerCase()] + settings.offset,
                             animateProp = {};
                         animateProp[scrollLT] = endScroll;
-                        if ($scrollingEl[scrollLT]() != endScroll) {
+                        if (Math.abs($scrollingEl[scrollLT]() - endScroll)>2) {
                             $('html, body').animate(animateProp, settings.duration, settings.easing, debounce(function () {
                                 if (settings.onSnap) {
                                     settings.onSnap($matchingEl);
