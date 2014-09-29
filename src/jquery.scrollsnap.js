@@ -105,6 +105,7 @@
 
                 var win = (scrollingEl.defaultView || scrollingEl.parentWindow);
 
+                var lastOffset = null;
                 var handler = function(e) {
 
                     var matchingEl = null, matchingDy = settings.proximity + 1;
@@ -133,7 +134,12 @@
 
                                 $matchingEl.trigger(settings.onSnapEvent)
                             }, settings.onSnapWait));
+                        } else if (endScroll !== lastOffset) {
+                            if (settings.onSnap) {
+                                settings.onSnap($matchingEl, true);
+                            }
                         }
+                        lastOffset = endScroll;
                     }
                 };
 
