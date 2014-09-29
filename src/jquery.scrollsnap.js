@@ -41,7 +41,7 @@
             'latency' : 250,
             'easing' : 'swing',
             'onSnapEvent' : 'scrollsnap', // triggered on the snapped DOM element
-            'onSnap' : function ($snappedElement) { }, // callback when an element was snapped
+            'onSnap' : function ($snappedElement, silent) { }, // callback when an element was snapped
             'onSnapWait' : 50 // wait for redundant snaps before firing event / calling callback
         }, options);
 
@@ -59,6 +59,7 @@
 
                 $scrollingEl.css('position', 'relative');
 
+                var lastOffset = null;
                 var handler = function(e) {
 
                     var matchingEl = null, matchingDy = settings.proximity + 1;
@@ -75,12 +76,11 @@
 
                     if (matchingEl) {
                         var endScroll = matchingEl[offsetLT] + settings.offset,
-                            animateProp = {};
+                            animateProp = {},
+                            $matchingEl = $(matchingEl);
                         animateProp[scrollLT] = endScroll;
                         if (Math.abs($scrollingEl[scrollLT]() - endScroll)>2) {
                             $scrollingEl.animate(animateProp, settings.duration, settings.easing, debounce(function () {
-                                var $matchingEl = $(matchingEl);
-
                                 if (settings.onSnap) {
                                     settings.onSnap($matchingEl);
                                 }
@@ -88,7 +88,12 @@
                                 $matchingEl.trigger(settings.onSnapEvent);
 
                             }, settings.onSnapWait));
+                        } else if (endScroll !== lastOffset) {
+                            if (settings.onSnap) {
+                                settings.onSnap($matchingEl, true);
+                            }
                         }
+                        lastOffset = endScroll;
                     }
 
                 };
