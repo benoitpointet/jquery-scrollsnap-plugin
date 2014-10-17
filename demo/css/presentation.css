@@ -5,6 +5,11 @@
     background-repeat: no-repeat;
 }
 
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
 code ul li {
     font-size: 85%;
 }
